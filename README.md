@@ -3,7 +3,7 @@
 一套舊字形風格中文字型。
 
 ## Bright Moon Kai 皓月楷
-基於[霞鶩文楷 TC](https://github.com/lxgw/LxgwWenkaiTC) 以及 [Klee](https://github.com/fontworks-fonts/Klee)，參照《洪武正韻》（明嘉靖四十年劉以節刊本）將點畫拉直處理。  
+基於[霞鶩文楷 TC](https://github.com/lxgw/LxgwWenkaiTC) 以及 [Klee](https://github.com/fontworks-fonts/Klee)，參照《洪武正韻》（明嘉靖四十年劉以節刊本）將點畫拉直處理，使用[芫荽](https://github.com/ButTaiwan/iansui)的四筆「艹」部件。  
 ![image](./pictures/picture001.png)  
 
 ## Array Stars Kai 繁星楷
@@ -18,4 +18,4 @@
 ## 鳴謝
 * [霞鶩文楷 TC](https://github.com/lxgw/LxgwWenkaiTC)
 * [Klee](https://github.com/fontworks-fonts/Klee)
-
+* [芫荽](https://github.com/ButTaiwan/iansui)
