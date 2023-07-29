@@ -9,6 +9,9 @@
 ## Array Stars Kai 繁星楷
 由皓月楷修改，簡入繁出的字型。此字型使用了 OpenType 功能，可根據文字内容動態匹配一簡多繁的情況。
 
+## CL 版本
+傳承字形版。此版本與[霞鶩文楷 TC](https://github.com/lxgw/LxgwWenkaiTC) 字形接近。
+
 ## 下載字型
 可從本站 [Releases](../../releases) 頁面下載字型。
 
@@ -19,3 +22,6 @@
 * [霞鶩文楷 TC](https://github.com/lxgw/LxgwWenkaiTC)、[霞鶩文楷](https://github.com/lxgw/LxgwWenKai)
 * [Klee](https://github.com/fontworks-fonts/Klee)
 * [芫荽](https://github.com/ButTaiwan/iansui)
+* [FontForge](https://github.com/fontforge/fontforge)
+* [FontTools](https://github.com/fonttools/fonttools)
+* [AFDKO](https://github.com/adobe-type-tools/afdko/)
