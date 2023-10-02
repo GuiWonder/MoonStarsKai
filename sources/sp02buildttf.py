@@ -82,6 +82,19 @@ def rmlklg(fontlx):
 					if len(stbl.ligatures[li])<1:
 						del stbl.ligatures[li]
 
+def dftlk(font):
+	dfllan=list()
+	for sr in font['GSUB'].table.ScriptList.ScriptRecord:
+		if sr.ScriptTag=='DFLT':
+			dfllan=sr.Script.DefaultLangSys.FeatureIndex
+			break
+		for lsr in sr.Script.LangSysRecord:
+			print('locl', lsr.LangSys.FeatureIndex)
+			raise
+	assert len(dfllan)>0
+	for sr in font['GSUB'].table.ScriptList.ScriptRecord:
+		if sr.ScriptTag!='DFLT':
+			sr.Script.DefaultLangSys.FeatureIndex=dfllan
 
 inft=sys.argv[1]
 outft=sys.argv[2]
@@ -122,6 +135,7 @@ with open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fwid.txt'),'
 			lkfw[cmap[ord(s)]]=cmap[ord(t)]
 addlk('fwid', lkfw)
 rmlklg(font)
+dftlk(font)
 newft=TTFont(inft, fontNumber=0)
 newft['GSUB']=font['GSUB']
 newft['cmap']=font['cmap']

@@ -2,7 +2,7 @@ import os, json, sys, copy
 from fontTools.ttLib import TTFont, newTable
 from fontTools.ttLib.tables import otTables
 
-ftversion='1.05'
+ftversion='1.06'
 hy=dict()
 hy['en']='Bright Moon Kai'
 hy['tc']='皓月楷'
@@ -341,4 +341,5 @@ saveft(infont)
 hwcmp(infont)
 infont['name']=setname(fx, weight, True)
 saveft(infont, True)
+
 
