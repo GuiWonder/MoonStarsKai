@@ -1,9 +1,10 @@
 [繁體中文](../../) **简体中文**
 # Bright Moon Kai 皓月楷 & Array Stars Kai 繁星楷
-一套旧字形风格中文字体。
+一款由 [Klee](https://github.com/fontworks-fonts/Klee) 衍生旧字形或古体字形风格的中文字体。
 
 ## Bright Moon Kai 皓月楷
-基于[霞鹜文楷 TC](https://github.com/lxgw/LxgwWenkaiTC)、[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)以及 [Klee](https://github.com/fontworks-fonts/Klee)，参照《洪武正韵》（明嘉靖四十年刘以节刊本）将点画改用直点，使用[芫荽](https://github.com/ButTaiwan/iansui)的四笔「艹」部件, 并对一部分字形部件进行修改。部分字形**与现代书写有明显差异**，一般常见于书法字贴。  
+在[霞鹜文楷 TC](https://github.com/lxgw/LxgwWenkaiTC)的基础上，结合[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)以及 [Klee](https://github.com/fontworks-fonts/Klee)字形，参照《洪武正韵》（明嘉靖四十年刘以节刊本）制作。部分字形在*现代书写中已经很少见*，但可常见于书法字贴。  
+
 ![image](./pictures/picture001.png)  
 
 ## Array Stars Kai 繁星楷

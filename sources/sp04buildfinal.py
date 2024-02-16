@@ -2,7 +2,7 @@ import os, json, sys, copy
 from fontTools.ttLib import TTFont, newTable
 from fontTools.ttLib.tables import otTables
 
-ftversion='1.06'
+ftversion='1.07'
 hy=dict()
 hy['en']='Bright Moon Kai'
 hy['tc']='皓月楷'
@@ -237,7 +237,7 @@ def setname(names, wt, ismono=False):
 		fullNamesc=ftNamesc
 		fullNametc=ftNametc
 	newnane=newTable('name')
-	newnane.setName('Copyright 2023 '+names['en'], 0, 3, 1, 1033)
+	newnane.setName('Copyright 2023-2024 '+names['en'], 0, 3, 1, 1033)
 	newnane.setName(ftName, 1, 3, 1, 1033)
 	newnane.setName(subfamily, 2, 3, 1, 1033)
 	newnane.setName(uniqID, 3, 3, 1, 1033)

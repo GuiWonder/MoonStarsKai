@@ -33,34 +33,49 @@ def addlk(lktg, sgtb):
 			lsr.LangSys.FeatureIndex=[i+1 for i in lsr.LangSys.FeatureIndex]
 			lsr.LangSys.FeatureIndex.insert(0, 0)
 def mergelk():
+	mgl=dict()
+	mgl2=dict()
 	for i in range(len(font["GSUB"].table.LookupList.Lookup)):
-		lk1=font["GSUB"].table.LookupList.Lookup[i]
-		lk2=fontmn["GSUB"].table.LookupList.Lookup[i]
-		for j in range(len(lk1.SubTable)):
-			st1=lk1.SubTable[j]
-			st2=lk2.SubTable[j]
-			assert st1.LookupType==st2.LookupType
-			if st1.LookupType==1:
-				tabl1=st1.mapping
-				tabl2=st2.mapping
-				for g1, g2 in list(tabl2.items()):
-					if g1 not in tabl1:
-						tabl1[g1]=g2
-			elif st1.LookupType==4:
-				lg1=st1.ligatures
-				lg2=st2.ligatures
-				for g1 in lg2:
-					if g1 not in lg1:
-						lg1[g1]=lg2[g1]
-					else:
-						if lg1[g1]!=lg2[g1]:
-							for lgi1 in lg2[g1]:
-								if lgi1 not in lg1[g1]:
-									lg1[g1].append(lgi1)
-			elif st1.LookupType==6:
-				lk1.SubTable.append(st2)
-			else:
-				raise
+		tp=font["GSUB"].table.LookupList.Lookup[i].SubTable[0].LookupType
+		if tp not in mgl:mgl[tp]=list()
+		mgl[tp].append(i)
+	for i in range(len(fontmn["GSUB"].table.LookupList.Lookup)):
+		tp=fontmn["GSUB"].table.LookupList.Lookup[i].SubTable[0].LookupType
+		if tp not in mgl2:mgl2[tp]=list()
+		mgl2[tp].append(i)
+	
+	for tp in mgl:
+		assert len(mgl[tp])==len(mgl2[tp])
+		for i in range(len(mgl[tp])):
+			i1, i2=mgl[tp][i], mgl2[tp][i]
+			lk1=font["GSUB"].table.LookupList.Lookup[i1]
+			lk2=fontmn["GSUB"].table.LookupList.Lookup[i2]
+			for j in range(len(lk1.SubTable)):
+				st1=lk1.SubTable[j]
+				st2=lk2.SubTable[j]
+				print(i1, i2, j)
+				assert st1.LookupType==st2.LookupType
+				if st1.LookupType==1:
+					tabl1=st1.mapping
+					tabl2=st2.mapping
+					for g1, g2 in list(tabl2.items()):
+						if g1 not in tabl1:
+							tabl1[g1]=g2
+				elif st1.LookupType==4:
+					lg1=st1.ligatures
+					lg2=st2.ligatures
+					for g1 in lg2:
+						if g1 not in lg1:
+							lg1[g1]=lg2[g1]
+						else:
+							if lg1[g1]!=lg2[g1]:
+								for lgi1 in lg2[g1]:
+									if lgi1 not in lg1[g1]:
+										lg1[g1].append(lgi1)
+				elif st1.LookupType==6:
+					lk1.SubTable.append(st2)
+				else:
+					raise
 
 def rmlogo(fontlx):
 	for table in fontlx["cmap"].tables:
