@@ -2,13 +2,15 @@ import os, json, sys, copy
 from fontTools.ttLib import TTFont, newTable
 from fontTools.ttLib.tables import otTables
 
-ftversion='1.100'
+ftversion='1.101'
 fthyen='Moon Stars Kai'
 fthytc='月星楷'
 fthysc='月星楷'
+fthyjp='月星楷'
 ftfxen='Moon Stars Kai T'
 ftfxtc='月星楷 繁'
 ftfxsc='月星楷 繁'
+ftfxjp='月星楷 繁'
 
 comid='GUIW'
 fturl='https://github.com/GuiWonder/MoonStarsKai'
@@ -17,11 +19,13 @@ hy=dict()
 hy['en']=fthyen
 hy['tc']=fthytc
 hy['sc']=fthysc
+hy['jp']=fthyjp
 hy['vs']=ftversion
 fx=dict()
 fx['en']=ftfxen
 fx['tc']=ftfxtc
 fx['sc']=ftfxsc
+fx['jp']=ftfxjp
 fx['vs']=ftversion
 
 pydir=os.path.abspath(os.path.dirname(__file__))
@@ -255,32 +259,37 @@ def setname(names, wt, ishw=False):
 	fmlName=names['en']
 	scn=names['tc']
 	tcn=names['sc']
+	jpn=names['jp']
 	version=names['vs']
 	if ishw:
 		fmlName+=' HW'
 		scn+=' 半宽'
 		tcn+=' 半寬'
+		jpn+=' HW'
 	ftName=fmlName
 	ftNamesc=scn
 	ftNametc=tcn
+	ftNamejp=jpn
 	if wt not in ('Regular', 'Bold'):
 		ftName+=' '+wt
 		ftNamesc+=' '+wt
 		ftNametc+=' '+wt
+		ftNamejp+=' '+wt
 	subfamily='Regular'
 	if wt=='Bold':
 		subfamily='Bold'
 	psName=fmlName.replace(' ', '')+'-'+wt
 	uniqID=version+';'+comid.strip()+';'+psName
-	#if wt=='Bold':
 	if wt in ('Regular', 'Bold'):
 		fullName=ftName+' '+wt
 		fullNamesc=ftNamesc+' '+wt
 		fullNametc=ftNametc+' '+wt
+		fullNamejp=ftNamejp+' '+wt
 	else:
 		fullName=ftName
 		fullNamesc=ftNamesc
 		fullNametc=ftNametc
+		fullNamejp=ftNamejp
 	newnane=newTable('name')
 	newnane.setName(f'Copyright 2023-2024 {names["en"]} Project Authors ({fturl})', 0, 3, 1, 1033)
 	newnane.setName(ftName, 1, 3, 1, 1033)
@@ -290,7 +299,6 @@ def setname(names, wt, ishw=False):
 	newnane.setName('Version '+version, 5, 3, 1, 1033)
 	newnane.setName(psName, 6, 3, 1, 1033)
 	newnane.setName('GuiWonder', 9, 3, 1, 1033)
-	#newnane.setName(cfg['fontDiscript'], 10, 3, 1, 1033)
 	newnane.setName(fturl, 11, 3, 1, 1033)
 	newnane.setName('This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL', 13, 3, 1, 1033)
 	newnane.setName('https://scripts.sil.org/OFL', 14, 3, 1, 1033)
@@ -311,6 +319,12 @@ def setname(names, wt, ishw=False):
 		if wt not in ('Regular', 'Bold'):
 			newnane.setName(scn, 16, 3, 1, lanid)
 			newnane.setName(wt, 17, 3, 1, lanid)
+	newnane.setName(ftNamejp, 1, 3, 1, 1041)
+	newnane.setName(subfamily, 2, 3, 1, 1041)
+	newnane.setName(fullNamejp, 4, 3, 1, 1041)
+	if wt not in ('Regular', 'Bold'):
+		newnane.setName(jpn, 16, 3, 1, 1041)
+		newnane.setName(wt, 17, 3, 1, 1041)
 	return newnane
 
 def setrbbb(font, stylename):
@@ -394,5 +408,3 @@ hwcmp(infont)
 infont['name']=setname(fx, weight, True)
 prouv(infont, False)
 saveft(infont, True)
-
-
