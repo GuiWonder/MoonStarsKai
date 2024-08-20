@@ -2,7 +2,7 @@ import os, json, sys, copy
 from fontTools.ttLib import TTFont, newTable
 from fontTools.ttLib.tables import otTables
 
-ftversion='1.101'
+ftversion='1.102'
 fthyen='Moon Stars Kai'
 fthytc='月星楷'
 fthysc='月星楷'
