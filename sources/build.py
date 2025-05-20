@@ -2,7 +2,7 @@ import os, json, sys, copy
 from fontTools.ttLib import TTFont, newTable
 from fontTools.ttLib.tables import otTables
 
-ftversion='1.102'
+ftversion='1.103'
 fthyen='Moon Stars Kai'
 fthytc='月星楷'
 fthysc='月星楷'
@@ -27,6 +27,17 @@ fx['tc']=ftfxtc
 fx['sc']=ftfxsc
 fx['jp']=ftfxjp
 fx['vs']=ftversion
+
+iscl=False
+if len(sys.argv)>3 and sys.argv[3].lower()=='cl':
+	iscl=True
+
+if iscl:
+	hy['en']+=' CL'
+	fx['en']+=' CL'
+	for nmtg in ['tc', 'sc']:
+		hy[nmtg]+='CL'
+		fx[nmtg]+='CL'
 
 pydir=os.path.abspath(os.path.dirname(__file__))
 
@@ -291,7 +302,7 @@ def setname(names, wt, ishw=False):
 		fullNametc=ftNametc
 		fullNamejp=ftNamejp
 	newnane=newTable('name')
-	newnane.setName(f'Copyright 2023-2024 {names["en"]} Project Authors ({fturl})', 0, 3, 1, 1033)
+	newnane.setName(f'Copyright 2023-2025 {names["en"]} Project Authors ({fturl})', 0, 3, 1, 1033)
 	newnane.setName(ftName, 1, 3, 1, 1033)
 	newnane.setName(subfamily, 2, 3, 1, 1033)
 	newnane.setName(uniqID, 3, 3, 1, 1033)
